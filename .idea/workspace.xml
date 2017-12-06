@@ -28,13 +28,13 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="168" column="22" lean-forward="true" selection-start-line="168" selection-start-column="22" selection-end-line="168" selection-end-column="22" />
+            <state relative-caret-position="598">
+              <caret line="196" column="78" lean-forward="false" selection-start-line="196" selection-start-column="78" selection-end-line="196" selection-end-column="78" />
               <folding>
                 <element signature="e#1895#1896#0" expanded="true" />
                 <element signature="e#2019#2020#0" expanded="true" />
-                <element signature="e#18537#18538#0" expanded="true" />
-                <element signature="e#18813#18814#0" expanded="true" />
+                <element signature="e#18552#18553#0" expanded="true" />
+                <element signature="e#18828#18829#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -307,6 +307,14 @@
             <path>
               <item name="kickstarterscraper" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kickstarterscraper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
               <item name="Maven: com.google.guava:guava:21.0" type="70bed36:NamedLibraryElementNode" />
             </path>
             <path>
@@ -498,12 +506,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1512501506799</updated>
-      <workItem from="1512501508390" duration="29723000" />
+      <workItem from="1512501508390" duration="29776000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29723000" />
+    <option name="totallyTimeSpent" value="29776000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="124" y="80" width="1769" height="1117" extended-state="0" />
@@ -654,15 +662,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/src.zip!/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="707" column="12" lean-forward="false" selection-start-line="707" selection-start-column="12" selection-end-line="707" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="168" column="22" lean-forward="true" selection-start-line="168" selection-start-column="22" selection-end-line="168" selection-end-column="22" />
+        <state relative-caret-position="598">
+          <caret line="196" column="78" lean-forward="false" selection-start-line="196" selection-start-column="78" selection-end-line="196" selection-end-column="78" />
           <folding>
             <element signature="e#1895#1896#0" expanded="true" />
             <element signature="e#2019#2020#0" expanded="true" />
-            <element signature="e#18537#18538#0" expanded="true" />
-            <element signature="e#18813#18814#0" expanded="true" />
+            <element signature="e#18552#18553#0" expanded="true" />
+            <element signature="e#18828#18829#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -194,7 +194,7 @@ We have to code the gender of he entrepreneur manually
 
     new Thread(() -> {
       try {
-        saveProjectsToJsonFiles(linesMaster.subList(22000,39000), succeededScrIds);
+        saveProjectsToJsonFiles(linesMaster.subList(22000,linesMaster.size()-1), succeededScrIds);
       } catch (IOException e) {
         e.printStackTrace();
       } catch (InterruptedException e) {
