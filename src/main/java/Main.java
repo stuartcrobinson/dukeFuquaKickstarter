@@ -15,7 +15,9 @@ import java.net.MalformedURLException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -30,12 +32,18 @@ public class Main {
 
     List<String> linesMaster = Files.readAllLines(new File(csvFile).toPath());
 
-    FileUtils.deleteDirectory(new File("../beccaKickstarterOutputSuccess"));
+//    FileUtils.deleteDirectory(new File("../beccaKickstarterOutputSuccess"));
     FileUtils.deleteDirectory(new File("../beccaKickstarterOutputFail"));
 
     new File("../beccaKickstarterOutputSuccess").mkdir();
     new File("../beccaKickstarterOutputFail").mkdir();
 
+    File[] successes = new File("../beccaKickstarterOutputSuccess").listFiles();
+
+    List<String> succeededScrIds = Arrays.stream(successes).map(File::getName).collect(Collectors.toList());
+    System.out.println(succeededScrIds);
+
+//    System.exit(0);
 
     for (List<String> lines : Lists.partition(linesMaster, 1000)) {
 
@@ -43,7 +51,7 @@ public class Main {
 
       new Thread(() -> {
         try {
-          saveProjectsToJsonFiles(lines);
+          saveProjectsToJsonFiles(lines, succeededScrIds);
         } catch (IOException e) {
           e.printStackTrace();
         } catch (InterruptedException e) {
@@ -56,7 +64,7 @@ public class Main {
 
   }
 
-  private static void saveProjectsToJsonFiles(List<String> lines) throws IOException, InterruptedException, XPathExpressionException {
+  private static void saveProjectsToJsonFiles(List<String> lines, List<String> succeededScrIds) throws IOException, InterruptedException, XPathExpressionException {
 
     int c = -1;
     for (String lineStr : lines) {
@@ -80,6 +88,11 @@ public class Main {
       System.out.println(lineStr);
 
       String scrId = line[0];
+
+      if (succeededScrIds.contains(scrId)) {
+        System.out.println("returning, already downloaded " + scrId);
+        continue;
+      }
       String _title = line[3];
       String _blurb = line[4];
       String url = line[17];
@@ -175,7 +188,7 @@ public class Main {
 
 
       } catch (ArrayIndexOutOfBoundsException fefew) {
-        System.out.println("failed for " + _title + ", " + _blurb + ", " + url + ", " +  bingSearchUrl);
+        System.out.println("failed for " + _title + ", " + _blurb + ", " + url + ", " + bingSearchUrl);
         fefew.printStackTrace();
         FileUtils.writeStringToFile(new File("../beccaKickstarterOutputFail/" + scrId), "", StandardCharsets.UTF_8);
       }

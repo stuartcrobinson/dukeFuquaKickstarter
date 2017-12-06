@@ -259,7 +259,7 @@
           </execution>
         </executions>
         <configuration>
-          <mainClass>Tumblr</mainClass>
+          <mainClass>Main</mainClass>
         </configuration>
       </plugin>
 
@@ -281,24 +281,24 @@
       <!--</plugin>-->
 
 
-      <!--not working.  just running in linux w/ maven-->
+      <!--&lt;!&ndash;not working.  just running in linux w/ maven&ndash;&gt;-->
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <!-- DO NOT include log4j.properties file in your Jar -->
-          <excludes>
-            <exclude>**/log4j.properties</exclude>
-          </excludes>
-          <archive>
-            <manifest>
-              <!-- Jar file entry point! -->
-              <mainClass>Tumblr</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
+      <!--<plugin>-->
+        <!--<groupId>org.apache.maven.plugins</groupId>-->
+        <!--<artifactId>maven-jar-plugin</artifactId>-->
+        <!--<configuration>-->
+          <!--&lt;!&ndash; DO NOT include log4j.properties file in your Jar &ndash;&gt;-->
+          <!--<excludes>-->
+            <!--<exclude>**/log4j.properties</exclude>-->
+          <!--</excludes>-->
+          <!--<archive>-->
+            <!--<manifest>-->
+              <!--&lt;!&ndash; Jar file entry point! &ndash;&gt;-->
+              <!--<mainClass>Tumblr</mainClass>-->
+            <!--</manifest>-->
+          <!--</archive>-->
+        <!--</configuration>-->
+      <!--</plugin>-->
 
 
     </plugins>
