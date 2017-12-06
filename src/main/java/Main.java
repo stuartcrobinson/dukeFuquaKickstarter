@@ -157,11 +157,12 @@ We have to code the gender of he entrepreneur manually
 //    System.exit(0);
 
     System.out.println(linesMaster.size());
-        System.exit(0);
+//        System.exit(0);
 
 
+        int count = 0;
     for (List<String> lines : Lists.partition(linesMaster, 500)) {
-
+      count++;
 //      saveProjectsToJsonFiles(lines);
 
       new Thread(() -> {
@@ -176,6 +177,7 @@ We have to code the gender of he entrepreneur manually
         }
       }).start();
     }
+    System.out.println(count);
 
   }
 
