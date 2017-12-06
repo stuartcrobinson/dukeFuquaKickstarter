@@ -157,7 +157,18 @@ We have to code the gender of he entrepreneur manually
 //    System.exit(0);
 
     System.out.println(linesMaster.size());
+    System.out.println(succeededScrIds.size());
 //        System.exit(0);
+
+    try {
+      saveProjectsToJsonFiles(linesMaster, succeededScrIds);
+    } catch (InterruptedException e) {
+      System.out.println("failed " + e);
+      e.printStackTrace();
+    } catch (XPathExpressionException e) {
+      System.out.println("failed " + e);
+      e.printStackTrace();
+    }
 
     int count = 0;
     for (List<String> lines : Lists.partition(linesMaster, 500)) {
@@ -220,7 +231,7 @@ We have to code the gender of he entrepreneur manually
         String url = line[17];
 
 
-        System.out.println("here1");
+        System.out.println("here1 " + scrId);
         System.out.println(url);
 
         String source = null;
