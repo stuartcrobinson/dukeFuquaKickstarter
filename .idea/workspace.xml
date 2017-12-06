@@ -28,17 +28,17 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="257" column="21" lean-forward="true" selection-start-line="257" selection-start-column="21" selection-end-line="257" selection-end-column="21" />
+            <state relative-caret-position="252">
+              <caret line="258" column="0" lean-forward="true" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
               <folding>
-                <element signature="e#5626#5627#0" expanded="true" />
-                <element signature="e#5750#5751#0" expanded="true" />
-                <element signature="e#27293#27294#0" expanded="true" />
-                <element signature="e#27314#27315#0" expanded="true" />
-                <element signature="e#27368#27369#0" expanded="true" />
-                <element signature="e#27389#27390#0" expanded="true" />
-                <element signature="e#28789#28790#0" expanded="true" />
-                <element signature="e#29065#29066#0" expanded="true" />
+                <element signature="e#5672#5673#0" expanded="true" />
+                <element signature="e#5796#5797#0" expanded="true" />
+                <element signature="e#29171#29172#0" expanded="true" />
+                <element signature="e#29192#29193#0" expanded="true" />
+                <element signature="e#29246#29247#0" expanded="true" />
+                <element signature="e#29267#29268#0" expanded="true" />
+                <element signature="e#30667#30668#0" expanded="true" />
+                <element signature="e#30943#30944#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -144,6 +144,7 @@
       <find>failed for line</find>
       <find>robin</find>
       <find>failed</find>
+      <find>copyr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -520,12 +521,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1512501506799</updated>
-      <workItem from="1512501508390" duration="40412000" />
+      <workItem from="1512501508390" duration="42754000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40412000" />
+    <option name="totallyTimeSpent" value="42754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="106" y="73" width="1769" height="1117" extended-state="0" />
@@ -551,7 +552,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26712328" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34931508" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -686,17 +687,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="257" column="21" lean-forward="true" selection-start-line="257" selection-start-column="21" selection-end-line="257" selection-end-column="21" />
+        <state relative-caret-position="252">
+          <caret line="258" column="0" lean-forward="true" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
           <folding>
-            <element signature="e#5626#5627#0" expanded="true" />
-            <element signature="e#5750#5751#0" expanded="true" />
-            <element signature="e#27293#27294#0" expanded="true" />
-            <element signature="e#27314#27315#0" expanded="true" />
-            <element signature="e#27368#27369#0" expanded="true" />
-            <element signature="e#27389#27390#0" expanded="true" />
-            <element signature="e#28789#28790#0" expanded="true" />
-            <element signature="e#29065#29066#0" expanded="true" />
+            <element signature="e#5672#5673#0" expanded="true" />
+            <element signature="e#5796#5797#0" expanded="true" />
+            <element signature="e#29171#29172#0" expanded="true" />
+            <element signature="e#29192#29193#0" expanded="true" />
+            <element signature="e#29246#29247#0" expanded="true" />
+            <element signature="e#29267#29268#0" expanded="true" />
+            <element signature="e#30667#30668#0" expanded="true" />
+            <element signature="e#30943#30944#0" expanded="true" />
           </folding>
         </state>
       </provider>

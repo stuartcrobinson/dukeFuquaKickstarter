@@ -34,7 +34,8 @@ import javax.xml.xpath.XPathFactory;
 public class Main {
   public static void main(String[] asdf) throws IOException, InterruptedException, XPathExpressionException, JustGiveUpException {
 
-    //convert epoch timestamps to readable dates yearMoDay.  times NOT in millis!
+
+    //convert epoch timestamps to readable dates yearMoDay.  times NOT in millis! https://pypi.python.org/pypi/gender-guesser/
     //word count
 //
 //
@@ -222,24 +223,20 @@ We have to code the gender of he entrepreneur manually
     List<String> linesMaster = Files.readAllLines(new File(csvFile).toPath());
 
 //    List<String> linesMaster = new ArrayList();
-//    linesMaster.add("scr473\t2418111\t2041162158\tPexel - Greenlight Phase\t\"Pexel is an endless RPG Dungeon Crawler with a heavy focus on Challenging Gameplay, Combats, Exploration, Trading, Stories and more...\"\tPulse Studios\t\t\tVideo Games\t\t42787.75\t42805.75\tdeleted\t100\t80\t0.8\t7\thttps://www.kickstarter.com/projects/pulsestudio/pexel?ref=popular\tEUR\t‰âÂ\t0\t42788.7784722222\t42805.7777777778");
-//    linesMaster.add("scr668\t2647671\t1583074097\tPhantom Beats (Canceled)\t\"Hello, all. My name is Oladapo Olawuyi, born in Washington D.C., a Morgan State undergraduate student, and I want to create tunes.\"\tOladapo\t\t\tMusic\tMusic\t42944.5583333333\t42974.5583333333\tcanceled\t100\t65\t0.65\t3\thttps://www.kickstarter.com/projects/744604503/music-goals\tUSD\t$\t1\t42945.4173611111\t42974.5694444444");
-//    linesMaster.add("scr966\t2488451\t1114904072\tDOGOLSHOOT frenetic shooter (FREE on Android)\tTotally FREE shoot em up for ANDROID.(and no microtransactions ! )The particularity of this game is that player control 8 planes!!!\tCholoco\t\t\tGames\tVideo Games\t42833.5923611111\t42850.5\tfailed\t180\t36\t0.2\t3\thttps://www.kickstarter.com/projects/957008919/dogolshoot-frenetic-shooter-free-on-android\tEUR\t‰âÂ\t1\t42834.4173611111\t42850.5284722222");
-//    linesMaster.add("scr2055\t2722941\t1075671036\tStudio Ghibli Christmas Snow Globe Enamel Pins\t\"Spirited Away, Princess Mononoke, Howls Moving Castle, Kikis Delivery Service, Totoro Christmas Snow Globe Pins!\"\tSammy Stami\t\t\tFashion\tFashion\t43000.9534722222\t43020.9534722222\tlive\t300\t593\t1.97667\t42\thttps://www.kickstarter.com/projects/stami/studio-ghibli-christmas-snow-globe-enamel-pins?ref=popular\tGBP\tå£\t1\t43000.9659722222\t43011.4173611111");
-//    linesMaster.add("scr8902\t2390991\t365593613\tMXRKED A Collection Of Inked Illustrations By Robin Holstein\tA collection of inked illustrations pulled from my imagination and marked onto paper for you to hold in your hands and enjoy!\tRobin Holstein\t\t\tComics\tComics\t42767.6979166667\t42802.6979166667\tsuccessful\t1900\t3417\t1.79842\t100\thttps://www.kickstarter.com/projects/1360224290/mxrked-a-collection-of-inked-illustrations-by-robi\tUSD\t$\t1\t42767.7777777778\t42812.0770833333");
-//    linesMaster.add(
-//        "scr12741\t2658871\t1770116980\tSome Place Far From Here - Watercolor Artbook\t\"A collection of the different worlds, feelings, and lessons that came from deciding to give 100% in a career in art.\"\tCindy Duong\t\t\tArt\tIllustration\t42953.5534722222\t42983.5534722222\tsuccessful\t3000\t14778\t4.926\t221\t\"\\\"\"title_for_backing_tier\\\"\":\\\"\"Early Supporter ($50)\\\"\"\"\t\"\\\"\"title\\\"\":\\\"\"Early Supporter\\\"\"\"\t\"\\\"\"starts_at\\\"\":1502031600\"\t\"\\\"\"ends_at\\\"\":1502686800\"\t\"\\\"\"shipping_enabled\\\"\":true\"\t\"\\\"\"shipping_preference\\\"\":\\\"\"unrestricted\\\"\"\"");
-//    linesMaster.add(
-//        "scr13507\t2454311\t1703596104\tCognito Jr | Fidget Spinner | by LMS Gear\t\"A fidget toy that is a compact reimagining of the original Cognito. Made from high quality materials, with quality finishes in the USA.\"\tLingua Machining Solutions\t\t\tDesign\tProduct Design\t42811.9513888889\t42842\tsuccessful\t3500\t56505\t16.14429\t563\t\"\\\"\"title\\\"\":\\\"\"Cognito Jr Double Pack\\\"\"\"\t\"\\\"\"starts_at\\\"\":0\"\t\"\\\"\"ends_at\\\"\":0\"\t\"\\\"\"shipping_enabled\\\"\":true\"\t\"\\\"\"shipping_preference\\\"\":\\\"\"unrestricted\\\"\"\"\t\"\\\"\"shipping_summary\\\"\":\\\"\"Ships anywhere in the world\\\"\"\"");
-//    linesMaster.add(
-//        "scr14659\t2662041\t1906910891\tGramatik | Coffee Shop Selection On Vinyl\tCoffee Shop Selection is finally being released on vinyl! We're making this a one time only run!\tGramatik\t\t\tMusic\tElectronic Music\t42955.5583333333\t42976.5583333333\tsuccessful\t4000\t27380\t6.845\t665\t\"\\\"\"title\\\"\":\\\"\"Coffeeshop Selection Double Vinyl\\\"\"\"\t\"\\\"\"starts_at\\\"\":0\"\t\"\\\"\"ends_at\\\"\":0\"\t\"\\\"\"shipping_enabled\\\"\":true\"\t\"\\\"\"shipping_preference\\\"\":\\\"\"unrestricted\\\"\"\"\t\"\\\"\"shipping_summary\\\"\":\\\"\"Ships anywhere in the world\\\"\"\"");
-//    linesMaster.add(
-//        "scr12741\t2658871\t1770116980\tSome Place Far From Here - Watercolor Artbook\t\"A collection of the different worlds, feelings, and lessons that came from deciding to give 100% in a career in art.\"\tCindy Duong\t\t\tArt\tIllustration\t42953.5534722222\t42983.5534722222\tsuccessful\t3000\t14778\t4.926\t221\t\"\\\"\"title_for_backing_tier\\\"\":\\\"\"Early Supporter ($50)\\\"\"\"\t\"\\\"\"title\\\"\":\\\"\"Early Supporter\\\"\"\"\t\"\\\"\"starts_at\\\"\":1502031600\"\t\"\\\"\"ends_at\\\"\":1502686800\"\t\"\\\"\"shipping_enabled\\\"\":true\"\t\"\\\"\"shipping_preference\\\"\":\\\"\"unrestricted\\\"\"\"");
-//    linesMaster.add("");
-//    linesMaster.add("");
-//    linesMaster.add("");
-//    linesMaster.add("");
-//    linesMaster.add("");
+//    linesMaster.add("scr36055\t2410721\t1050467111\tMediacloud: Journalism by the people for the people (Canceled)\t\"Support the development of a self surveilling news website, based on grassroots journalism by the people for the people.\"\tOliver Schlumpf\t\t\tJournalism\tWeb\t42781.8631944444\t42841.8215277778\tcanceled\t80000\t0\t0\t0\thttps://www.kickstarter.com/projects/947656624/mediacloud-journalism-by-the-people-for-the-people\tEUR\t‰âÂ\t1\t42782.4180555556\t42812.0861111111");
+//    linesMaster.add("scr29949\t2527881\t267703940\tVision Notes‰ã¢ - A Visualization Journal & Sketchbook\t\"Vision Notes‰ã¢ is a 7\\x10\\\"\" visualization journal & sketchbook featuring 150 pages of 70 lb. weight acid-free drawing paper.\"\"\"\t\"Future Mind Media, LLC\"\t\t\tPublishing\tArt Books\t42860\t42890\tdeleted\t24750\t0\t0\t0\thttps://www.kickstarter.com/projects/futuremindmedia/vision-notestm-a-visualization-journal-and-sketchb?ref=popular\tUSD\t$\t1\t42860.4173611111\t42890.0277777778");
+//    linesMaster.add("scr4702\t2383061\t1364562319\tZero Patience Gaming Needs a Desktop\t\"My friend and I are about ready to launch our YouTube channel ,Zero Patience Gaming. The only thing we're missing is a Desktop for him!\"\tZero Patience Gaming\t\t\tGaming Hardware\t\t42761.9763888889\t42791.9763888889\tdeleted\t750\t0\t0\t0\thttps://www.kickstarter.com/projects/760155439/zero-patience-gaming-needs-a-desktop?ref=popular\tUSD\t$\t0\t42762.4590277778\t42791.9861111111");
+//    linesMaster.add("scr6236\t2536811\t1918117328\tPRODUCIR CONTENIDO EROTICO PARA WEB DE PRODUCTORA GAY\tCampaÌ±a para ganar fondos y poder continuar produciendo videos pornograficos y fotos eroticas con modelos y actores gays para gays.\tIvan\t\t\tPhotography\tPeople\t42861.4236111111\t42921.4236111111\tdeleted\t1000\t10\t0.01\t1\thttps://www.kickstarter.com/projects/249017071/producir-contenido-erotico-para-web-de-productora?ref=popular\tEUR\t‰âÂ\t1\t42866.4180555556\t42921.4444444444");
+//    linesMaster.add("scr28215\t2363391\t1858712793\tProtecting mask embedded with natural olfactory additives\t\"I am interested in developing respirator face masks embedded with an olfactory additive, such as menthol (like the menthol kleenex).\"\tTobias Foehr and Banan Al-Nasery\t\t\tTechnology\tWearables\t42747.9340277778\t42779.9576388889\tfailed\t20000\t0\t0\t0\thttps://www.kickstarter.com/projects/831231232/respirator-mask-protection-embedded-with-olfactory\tCHF\tFr \t1\t42749.4180555556\t42812.04375");
+//    linesMaster.add("scr15342\t2354691\t619709625\tEscapsim\tAn upcoming indie movie about a girl who subconsciously and unknowingly creates a sentient entity of herself.\tMia Alexander\t1\t\tFilm & Video\t\t42742.8708333333\t42782.8708333333\tdeleted\t5000\t30\t0.006\t3\thttps://www.kickstarter.com/projects/1146476498/escapsim?ref=popular\tUSD\t$\t0\t42743.4583333333\t42782.9034722222");
+//    linesMaster.add("scr6236\t2536811\t1918117328\tPRODUCIR CONTENIDO EROTICO PARA WEB DE PRODUCTORA GAY\tCampaÌ±a para ganar fondos y poder continuar produciendo videos pornograficos y fotos eroticas con modelos y actores gays para gays.\tIvan\t\t\tPhotography\tPeople\t42861.4236111111\t42921.4236111111\tdeleted\t1000\t10\t0.01\t1\thttps://www.kickstarter.com/projects/249017071/producir-contenido-erotico-para-web-de-productora?ref=popular\tEUR\t‰âÂ\t1\t42866.4180555556\t42921.4444444444");
+//    linesMaster.add("scr2763\t2374401\t2135764341\tCrude humour youtube channel using video games as props\t\"A crude and immature adult humor channel using video games as a prop, focusing on interactions between adults in comedic scenarios.\"\tAHH! You're pissing me off...\t\t\tComedy\t\t42755.7409722222\t42785.7409722222\tdeleted\t500\t0\t0\t0\thttps://www.kickstarter.com/projects/ahhyourepissingmeoff/crude-humour-youtube-channel-using-video-games-as\tUSD\t$\t0\t42756.4583333333\t42812.05625");
+//    linesMaster.add("scr7854\t2411991\t1316553835\tUse The HouseWife and forget the chore!\tThe HouseWife is an online modern company that helps everyone to find whatever they need for their household without leaving the house.\tGi\t\t\tWeb\t\t42774.8097222222\t42804.8097222222\tdeleted\t1500\t0\t0\t0\thttps://www.kickstarter.com/projects/thehousewife/use-the-housewife-and-forget-the-chore?ref=popular\tEUR\t‰âÂ\t0\t42783.4180555556\t42804.8201388889");
+//    linesMaster.add("scr12685\t2587681\t880774022\t\"The Legend of Chip, A Novel\"\t\"I am publishing my first novel, The Legend of Chip: The Legend Begins. Please preorder to help me get started.\"\tStanley Campbell\t\t\tPublishing\tFiction\t42899.6173611111\t42919.6173611111\tfailed\t3000\t60\t0.02\t2\thttps://www.kickstarter.com/projects/1082403770/the-legend-of-chip-a-novel\tUSD\t42900.4173611111\t42919.6527777778");
+//    linesMaster.add("scr33230\t2456971\t1100111323\tDAWSON HOLLOW\tThis music thing is so important. 15 years of touring and writing all for this moment.Let's change the world.\tDawson Hollow\t\t\tMusiIndie Rock\t42811.7125\t42845.6645833333\tdeleted\t40000\t20\t0.0005\t1\thttps://www.kickstarter.com/projects/1981246582/dawson-hollow?ref=popular\tUSD\t$\t1\t42814.4173611111\t42845.6944444444");
+//    linesMaster.add("scr29949\t2527881\t267703940\tVision Notes‰ã¢ - A Visualization Journal & Sketchbook\t\"Vision Notes‰ã¢ is a 7\\x10\\\"\" visualization journal & sketchbook featuring 150 pages of 70 lb. weight acid-free drawing paper.\"\"\"\t\"Future Mind Media, LLC\"\t\t\tPublishing\tArt Books\t42860\t42890\tdeleted\t24750\t0\t0\t0\thttps://www.kickstarter.com/projects/futuremindmedia/vision-notestm-a-visualization-journal-and-sketchb?ref=popular\tUSD\t$\t1\t42860.4173611111\t42890.0277777778");
+//    linesMaster.add("scr29190\t2625891\t1740389386\tMichl Heat pumps - the future of home heating\tMichl Heat Pumps are the latest type to supply a house with hot water and heating energy.\tSascha Michl\t\tTechnology\tTechnology\t42927.3770833333\t42972.3770833333\tfailed\t20000\t0\t0\t0\thttps://www.kickstarter.com/projects/1868386775/michl-heat-pumps-the-future-of-home-heating\tEUR\t‰âÂ\t1\t42928.4173611111\t42972.4027777778");
+//    linesMaster.add("scr4702\t2383061\t1364562319\tZero Patience Gaming Needs a Desktop\t\"My friend and I are about ready to launch our YouTube channel ,Zero Patience Gaming. The only thing we're missing is a Desktop for him!\"\tZero Patience Gaming\t\t\tGaming Hardware\t\t42761.9763888889\t42791.9763888889\tdeleted\t750\t0\t0\t0\thttps://www.kickstarter.com/projects/760155439/zero-patience-gaming-needs-a-desktop?ref=popular\tUSD\t$\t0\t42762.4590277778\t42791.9861111111");
 //    linesMaster.add("");
 //    linesMaster.add("");
 //    linesMaster.add("");
@@ -305,7 +302,7 @@ We have to code the gender of he entrepreneur manually
       try {
 
         if (getSucceededScrIds().contains(scrId)) {
-//          System.out.println("returning, already downloaded " + scrId);
+          System.out.println(scrId + " :)");
 //          System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
           continue;
         }
@@ -351,9 +348,13 @@ We have to code the gender of he entrepreneur manually
           } else if (source.contains("project has been removed from visibility at the request of the creator. It will remain permanently out of view")) {
             System.out.println("cancelled by creator");
             pitch = "";
+          }else if (source.contains("this project is no longer available")) {
+            System.out.println("this project is no longer available");
+            pitch = "";
           } else {
             pitch = getPitch(doc);
           }
+          //this project is no longer available
 
           jo.addProperty("pitch", pitch);
           jo.addProperty("scrId", scrId);
