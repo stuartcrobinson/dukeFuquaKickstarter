@@ -159,9 +159,10 @@ We have to code the gender of he entrepreneur manually
     System.out.println(linesMaster.size());
 //        System.exit(0);
 
-//    int count = 0;
+    int count = 0;
     for (List<String> lines : Lists.partition(linesMaster, 500)) {
 
+      System.out.println("parition: " + count++);
 //      for (String line : lines) {
 //        count++;
 //      }
@@ -193,13 +194,13 @@ We have to code the gender of he entrepreneur manually
       if (c == 0) {
         continue;
       }
-
-      if (c < 136) {
-        continue;
-      }
-      if (c > 1000) {
-        break;
-      }
+//
+//      if (c < 136) {
+//        continue;
+//      }
+//      if (c > 1000) {
+//        break;
+//      }
 
       String[] line = lineStr.split("\t");
 
