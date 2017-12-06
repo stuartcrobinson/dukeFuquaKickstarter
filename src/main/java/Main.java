@@ -191,9 +191,9 @@ We have to code the gender of he entrepreneur manually
 
       boolean skipThisOne = false;
       c += 1;
-      if (c == 0) {
-        continue;
-      }
+//      if (c == 0) {
+//        continue;
+//      }
 //
 //      if (c < 136) {
 //        continue;
@@ -219,6 +219,8 @@ We have to code the gender of he entrepreneur manually
         String _blurb = line[4];
         String url = line[17];
 
+
+        System.out.println("here1");
         System.out.println(url);
 
         String source = null;
@@ -292,6 +294,7 @@ We have to code the gender of he entrepreneur manually
 
 //      jo.addProperty("pitch", pitch);
 
+          System.out.println("here2");
           System.out.println(url);
 
           System.out.println(jo.get("id").getAsString());
