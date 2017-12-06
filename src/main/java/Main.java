@@ -45,7 +45,7 @@ public class Main {
 
 //    System.exit(0);
 
-    for (List<String> lines : Lists.partition(linesMaster, 1000)) {
+    for (List<String> lines : Lists.partition(linesMaster, 500)) {
 
 //      saveProjectsToJsonFiles(lines);
 
