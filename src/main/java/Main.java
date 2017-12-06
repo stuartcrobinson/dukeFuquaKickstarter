@@ -152,7 +152,7 @@ We have to code the gender of he entrepreneur manually
     File[] successes = new File("../beccaKickstarterOutputSuccess").listFiles();
 
     List<String> succeededScrIds = Arrays.stream(successes).map(File::getName).collect(Collectors.toList());
-    System.out.println(succeededScrIds);
+//    System.out.println(succeededScrIds);
 
 //    System.exit(0);
 
@@ -179,26 +179,25 @@ We have to code the gender of he entrepreneur manually
 
     int c = -1;
     for (String lineStr : lines) {
-      System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
 
-        boolean skipThisOne = false;
-        c += 1;
-        if (c == 0) {
-          continue;
-        }
+      boolean skipThisOne = false;
+      c += 1;
+      if (c == 0) {
+        continue;
+      }
 
-        if (c < 136) {
-          continue;
-        }
-        if (c > 1000) {
-          break;
-        }
+      if (c < 136) {
+        continue;
+      }
+      if (c > 1000) {
+        break;
+      }
 
-        String[] line = lineStr.split("\t");
+      String[] line = lineStr.split("\t");
 
-        System.out.println(lineStr);
+      System.out.println(lineStr);
 
-        String scrId = line[0];
+      String scrId = line[0];
 
       try {
 
@@ -298,18 +297,23 @@ We have to code the gender of he entrepreneur manually
 
           System.out.println(jo.toString());
           FileUtils.writeStringToFile(new File("../beccaKickstarterOutputSuccess/" + scrId), new JSONObject(jo.toString()).toString(2), StandardCharsets.UTF_8);
+          System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
 
 
         } catch (ArrayIndexOutOfBoundsException fefew) {
           System.out.println("failed for " + _title + ", " + _blurb + ", " + url + ", " + bingSearchUrl);
           fefew.printStackTrace();
           FileUtils.writeStringToFile(new File("../beccaKickstarterOutputFail/" + scrId), "", StandardCharsets.UTF_8);
+          System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
+
         }
       } catch (Exception e) {
 
-        System.out.println("failed for line " +lineStr);
+        System.out.println("failed for line " + lineStr);
         e.printStackTrace();
         FileUtils.writeStringToFile(new File("../beccaKickstarterOutputFail/" + scrId), "", StandardCharsets.UTF_8);
+        System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
+
       }
     }
 
