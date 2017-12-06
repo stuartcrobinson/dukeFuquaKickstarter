@@ -159,13 +159,12 @@ We have to code the gender of he entrepreneur manually
     System.out.println(linesMaster.size());
 //        System.exit(0);
 
-
-        int count = 0;
+//    int count = 0;
     for (List<String> lines : Lists.partition(linesMaster, 500)) {
-      
-      for (String line : lines){
-        count++;
-      }
+
+//      for (String line : lines) {
+//        count++;
+//      }
 //      saveProjectsToJsonFiles(lines);
 
       new Thread(() -> {
@@ -178,9 +177,9 @@ We have to code the gender of he entrepreneur manually
         } catch (XPathExpressionException e) {
           e.printStackTrace();
         }
-      });//.start();
+      }).start();
     }
-    System.out.println(count);
+//    System.out.println(count);
 
   }
 
@@ -204,14 +203,15 @@ We have to code the gender of he entrepreneur manually
 
       String[] line = lineStr.split("\t");
 
-      System.out.println(lineStr);
+//      System.out.println(lineStr);
 
       String scrId = line[0];
 
       try {
 
         if (succeededScrIds.contains(scrId)) {
-          System.out.println("returning, already downloaded " + scrId);
+//          System.out.println("returning, already downloaded " + scrId);
+//          System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
           continue;
         }
         String _title = line[3];
