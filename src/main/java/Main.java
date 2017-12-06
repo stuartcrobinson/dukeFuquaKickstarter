@@ -302,7 +302,7 @@ We have to code the gender of he entrepreneur manually
       try {
 
         if (getSucceededScrIds().contains(scrId)) {
-          System.out.println(scrId + " :)");
+//          System.out.println(scrId + " :)");
 //          System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
           continue;
         }
