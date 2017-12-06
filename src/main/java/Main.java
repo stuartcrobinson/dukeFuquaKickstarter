@@ -165,22 +165,10 @@ We have to code the gender of he entrepreneur manually
 
 
 
-    new Thread(() -> {
-      try {
-        saveProjectsToJsonFiles(linesMaster.subList(0,7000), succeededScrIds);
-      } catch (IOException e) {
-        e.printStackTrace();
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      } catch (XPathExpressionException e) {
-        e.printStackTrace();
-      }
-    }).start();
-
 
     new Thread(() -> {
       try {
-        saveProjectsToJsonFiles(linesMaster.subList(7000,14000), succeededScrIds);
+        saveProjectsToJsonFiles(linesMaster.subList(0,14000), succeededScrIds);
       } catch (IOException e) {
         e.printStackTrace();
       } catch (InterruptedException e) {
@@ -206,20 +194,7 @@ We have to code the gender of he entrepreneur manually
 
     new Thread(() -> {
       try {
-        saveProjectsToJsonFiles(linesMaster.subList(22000,30000), succeededScrIds);
-      } catch (IOException e) {
-        e.printStackTrace();
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      } catch (XPathExpressionException e) {
-        e.printStackTrace();
-      }
-    }).start();
-
-
-    new Thread(() -> {
-      try {
-        saveProjectsToJsonFiles(linesMaster.subList(30000,39000), succeededScrIds);
+        saveProjectsToJsonFiles(linesMaster.subList(22000,39000), succeededScrIds);
       } catch (IOException e) {
         e.printStackTrace();
       } catch (InterruptedException e) {
