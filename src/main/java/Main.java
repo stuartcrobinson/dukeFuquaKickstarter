@@ -160,37 +160,113 @@ We have to code the gender of he entrepreneur manually
     System.out.println(succeededScrIds.size());
 //        System.exit(0);
 
-    try {
-      saveProjectsToJsonFiles(linesMaster, succeededScrIds);
-    } catch (InterruptedException e) {
-      System.out.println("failed " + e);
-      e.printStackTrace();
-    } catch (XPathExpressionException e) {
-      System.out.println("failed " + e);
-      e.printStackTrace();
-    }
 
-    int count = 0;
-    for (List<String> lines : Lists.partition(linesMaster, 500)) {
 
-      System.out.println("parition: " + count++);
-//      for (String line : lines) {
-//        count++;
-//      }
-//      saveProjectsToJsonFiles(lines);
 
-      new Thread(() -> {
-        try {
-          saveProjectsToJsonFiles(lines, succeededScrIds);
-        } catch (IOException e) {
-          e.printStackTrace();
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        } catch (XPathExpressionException e) {
-          e.printStackTrace();
-        }
-      }).start();
-    }
+
+
+    new Thread(() -> {
+      try {
+        saveProjectsToJsonFiles(linesMaster.subList(0,7000), succeededScrIds);
+      } catch (IOException e) {
+        e.printStackTrace();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      } catch (XPathExpressionException e) {
+        e.printStackTrace();
+      }
+    }).start();
+
+
+    new Thread(() -> {
+      try {
+        saveProjectsToJsonFiles(linesMaster.subList(7000,14000), succeededScrIds);
+      } catch (IOException e) {
+        e.printStackTrace();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      } catch (XPathExpressionException e) {
+        e.printStackTrace();
+      }
+    }).start();
+
+
+    new Thread(() -> {
+      try {
+        saveProjectsToJsonFiles(linesMaster.subList(14000,22000), succeededScrIds);
+      } catch (IOException e) {
+        e.printStackTrace();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      } catch (XPathExpressionException e) {
+        e.printStackTrace();
+      }
+    }).start();
+
+
+    new Thread(() -> {
+      try {
+        saveProjectsToJsonFiles(linesMaster.subList(22000,30000), succeededScrIds);
+      } catch (IOException e) {
+        e.printStackTrace();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      } catch (XPathExpressionException e) {
+        e.printStackTrace();
+      }
+    }).start();
+
+
+    new Thread(() -> {
+      try {
+        saveProjectsToJsonFiles(linesMaster.subList(30000,39000), succeededScrIds);
+      } catch (IOException e) {
+        e.printStackTrace();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      } catch (XPathExpressionException e) {
+        e.printStackTrace();
+      }
+    }).start();
+
+//    System.exit(0);
+//
+//
+//
+//
+//
+//
+//    try {
+//      saveProjectsToJsonFiles(linesMaster, succeededScrIds);
+//    } catch (InterruptedException e) {
+//      System.out.println("failed " + e);
+//      e.printStackTrace();
+//    } catch (XPathExpressionException e) {
+//      System.out.println("failed " + e);
+//      e.printStackTrace();
+//    }
+//
+//    int count = 0;
+//    for (List<String> lines : Lists.partition(linesMaster, 500)) {
+//
+//      System.out.println("parition: " + count++);
+////      for (String line : lines) {
+////        count++;
+////      }
+////      saveProjectsToJsonFiles(lines);
+//
+//      new Thread(() -> {
+//        try {
+//          saveProjectsToJsonFiles(lines, succeededScrIds);
+//        } catch (IOException e) {
+//          e.printStackTrace();
+//        } catch (InterruptedException e) {
+//          e.printStackTrace();
+//        } catch (XPathExpressionException e) {
+//          e.printStackTrace();
+//        }
+//      }).start();
+//    }
 //    System.out.println(count);
 
   }
