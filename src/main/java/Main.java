@@ -156,6 +156,10 @@ We have to code the gender of he entrepreneur manually
 
 //    System.exit(0);
 
+    System.out.println(linesMaster.size());
+        System.exit(0);
+
+
     for (List<String> lines : Lists.partition(linesMaster, 500)) {
 
 //      saveProjectsToJsonFiles(lines);
