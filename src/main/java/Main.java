@@ -158,7 +158,23 @@ We have to code the gender of he entrepreneur manually
 
     System.out.println(linesMaster.size());
     System.out.println(succeededScrIds.size());
-//        System.exit(0);
+
+
+
+//
+//
+    try {
+      saveProjectsToJsonFiles(linesMaster, succeededScrIds);
+    } catch (InterruptedException e) {
+      System.out.println("failed " + e);
+      e.printStackTrace();
+    } catch (XPathExpressionException e) {
+      System.out.println("failed " + e);
+      e.printStackTrace();
+    }
+
+
+        System.exit(0);
 
 
 
