@@ -162,7 +162,10 @@ We have to code the gender of he entrepreneur manually
 
         int count = 0;
     for (List<String> lines : Lists.partition(linesMaster, 500)) {
-      count++;
+      
+      for (String line : lines){
+        count++;
+      }
 //      saveProjectsToJsonFiles(lines);
 
       new Thread(() -> {
