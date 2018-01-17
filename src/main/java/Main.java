@@ -17,10 +17,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.time.Instant;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -33,6 +33,7 @@ import javax.xml.xpath.XPathFactory;
 
 public class Main {
   public static void main(String[] asdf) throws IOException, InterruptedException, XPathExpressionException, JustGiveUpException {
+
 
 
     //convert epoch timestamps to readable dates yearMoDay.  times NOT in millis! https://pypi.python.org/pypi/gender-guesser/
@@ -51,95 +52,6 @@ public class Main {
 //    new File("../beccaKickstarterOutputSuccess").mkdir();
 //    new File("../beccaKickstarterOutputFail").mkdir();
 
-    Map<String, JsonObject> map_new_scrId_jo = getNewMap();
-    Map<String, String> map_old_scrId_line = getOldMap();
-
-    String oldHeader = getOldHeader();
-    String newHeader = getNewHeader();
-
-    //id is unique.
-
-    String megaFileStr = oldHeader + newHeader + "\n";
-    String updatedOld = oldHeader + "pitch\n";
-    String onlyNewStuff = newHeader + "\n";
-    String tiny = "id\tgoal\tcreator\tcreatorImageUrl\tgender\tgenderGuess\tgenderConfidence\tpitch\n";
-
-    // goal, pledge, creator, creatorImageUrl,
-
-    /*
-    Ask amount, pledge amount, whether goal was met
-We have to code the gender of he entrepreneur manually
-     */
-
-    for (String scrId : map_old_scrId_line.keySet()) {
-
-      JsonObject jo = map_new_scrId_jo.get(scrId);
-      String oldLine = map_old_scrId_line.get(scrId);
-
-//      String scrId = jo.get("scrId").getAsString();
-      String name = jo.get("name").getAsString();
-      String blurb = jo.get("blurb").getAsString();
-      String goal = jo.get("goal").getAsString();
-      String pledged = jo.get("pledged").getAsString();
-      String backers_count = jo.get("backers_count").getAsString();
-      String state = jo.get("state").getAsString();
-      String currency_symbol = jo.get("currency_symbol").getAsString();
-      String currency = jo.get("currency").getAsString();
-      String country = jo.get("country").getAsString();
-      String creator = jo.get("creator").getAsJsonObject().get("name").getAsString();
-      String gender = getGenderTerm(creator);
-      String genderEstimage = getGenderEstimate(creator);
-      String genderConfidence = getGenderConfidence(creator);
-      String creatorImgUrlMedium = jo.get("creator").getAsJsonObject().get("avatar").getAsJsonObject().get("medium").getAsString();
-      String created_at = getDate(jo.get("created_at").getAsString());
-      String launched_at = getDate(jo.get("launched_at").getAsString());
-      String deadline = getDate(jo.get("deadline").getAsString());
-      String location_city = jo.get("location").getAsJsonObject().get("localized_name").getAsString();
-      String location_state = jo.get("location").getAsJsonObject().get("state").getAsString();
-      String category = jo.get("category").getAsJsonObject().get("name").getAsString();
-      String pitch = jo.get("pitch").getAsString().replaceAll("\\n", " ").replaceAll("  ", " ").replaceAll("  ", " ").replaceAll("  ", " ");
-
-      String newFull = name + "\t" +
-                       blurb + "\t" +
-                       goal + "\t" +
-                       pledged + "\t" +
-                       backers_count + "\t" +
-                       state + "\t" +
-                       currency_symbol + "\t" +
-                       currency + "\t" +
-                       country + "\t" +
-                       creator + "\t" +
-                       gender + "\t" +
-                       genderEstimage + "\t" +
-                       genderConfidence + "\t" +
-                       creatorImgUrlMedium + "\t" +
-                       created_at + "\t" +
-                       launched_at + "\t" +
-                       deadline + "\t" +
-                       location_city + "\t" +
-                       location_state + "\t" +
-                       category + "\t" +
-                       pitch;
-
-      megaFileStr += newFull + "\n";
-      updatedOld += pitch + "\n";
-      onlyNewStuff += newFull + "\n";
-
-      String beccaId = oldLine.split("\t")[0];
-      tiny += beccaId + "\t" +
-              goal + "\t" +
-              creator + "\t" +
-              gender + "\t" +
-              genderEstimage + "\t" +
-              genderConfidence + "\t" +
-              pitch;
-
-      //TODO start here
-
-      /*
-      nohup mvn exec:java >/dev/null 2>&1 &
-       */
-    }
   }
 
   private static String getDate(String epochSeconds) {
@@ -219,8 +131,16 @@ We have to code the gender of he entrepreneur manually
 
 //    String csvFile = "/Users/stuart.robinson/beccakickstartblubs/2017_clean1.txt";
     String csvFile = "2017_clean1.txt";
+//    Set<String> scrIdsTodo = new HashSet(Files.readAllLines(new File("scrIdsTodo.txt").toPath()));
 
     List<String> linesMaster = Files.readAllLines(new File(csvFile).toPath());
+//
+//    linesMaster = linesMaster.stream().filter(line -> scrIdsTodo.contains(line.split("\t")[0])).collect(Collectors.toList());
+//    for (String line : linesMaster){
+//      System.out.println(line);
+//    }
+//        System.exit(0);
+
 
 //    List<String> linesMaster = new ArrayList();
 //    linesMaster.add("scr36055\t2410721\t1050467111\tMediacloud: Journalism by the people for the people (Canceled)\t\"Support the development of a self surveilling news website, based on grassroots journalism by the people for the people.\"\tOliver Schlumpf\t\t\tJournalism\tWeb\t42781.8631944444\t42841.8215277778\tcanceled\t80000\t0\t0\t0\thttps://www.kickstarter.com/projects/947656624/mediacloud-journalism-by-the-people-for-the-people\tEUR\t‰âÂ\t1\t42782.4180555556\t42812.0861111111");
@@ -276,34 +196,14 @@ We have to code the gender of he entrepreneur manually
 
   private static void saveProjectsToJsonFiles(List<String> lines) throws IOException, InterruptedException, XPathExpressionException {
 
-    int c = -1;
     for (String lineStr : lines) {
 
-
-      boolean skipThisOne = false;
-      c += 1;
-//      if (c == 0) {
-//        continue;
-//      }
-//
-//      if (c < 136) {
-//        continue;
-//      }
-//      if (c > 1000) {
-//        break;
-//      }
-
       String[] line = lineStr.split("\t");
-
-//      System.out.println(lineStr);
 
       String scrId = line[0];
 
       try {
-
         if (getSucceededScrIds().contains(scrId)) {
-//          System.out.println(scrId + " :)");
-//          System.out.println("------------------------------------------------------------------------------------------------------------------------------------");
           continue;
         }
         String _title = line[3];
@@ -334,6 +234,16 @@ We have to code the gender of he entrepreneur manually
           System.out.println("here2");
           System.out.println(url);
 
+          /*
+
+
+
+          TODO - idfk ... go through downloaded json files and see which ones dont have "pitch" - or it's empty.
+
+          also go through and add gender
+
+           */
+
           System.out.println(jo.get("id").getAsString());
           System.out.println(jo.get("name").getAsString());
           System.out.println(jo.get("blurb").getAsString());
@@ -348,12 +258,18 @@ We have to code the gender of he entrepreneur manually
           } else if (source.contains("project has been removed from visibility at the request of the creator. It will remain permanently out of view")) {
             System.out.println("cancelled by creator");
             pitch = "";
-          }else if (source.contains("this project is no longer available")) {
+          } else if (source.contains("this project is no longer available")) {
             System.out.println("this project is no longer available");
+            pitch = "";
+          }else if (source.contains("been hidden for privacy")) {
+            System.out.println("been hidden for privacy");
             pitch = "";
           } else {
             pitch = getPitch(doc);
           }
+
+          //been hidden for privacy
+          System.out.println("pitch len: " + pitch.length());
           //this project is no longer available
 
           jo.addProperty("pitch", pitch);
@@ -572,146 +488,6 @@ We have to code the gender of he entrepreneur manually
 
     text = text.replaceAll("\\n\\n\\n", "\n\n").replaceAll("\\n\\n\\n", "\n\n").replaceAll("\\n\\n\\n", "\n\n").replaceAll("\\n\\n\\n", "\n\n").replaceAll("\\n\\n\\n", "\n\n");
     return text;
-  }
-
-  public static Map<String, JsonObject> getNewMap() throws IOException {
-
-    File[] successes = new File("../beccaKickstarterOutputSuccess").listFiles();
-
-    Map<String, JsonObject> map_new_scrId_line = new HashMap();
-
-    for (File successFile : successes) {
-      String json = FileUtils.readFileToString(successFile, StandardCharsets.UTF_8);
-
-      JsonParser jsonParser = new JsonParser();
-      JsonObject jo = (JsonObject) jsonParser.parse(json);
-
-      String scrId = jo.get("scrId").getAsString();
-      String name = jo.get("name").getAsString();
-      String blurb = jo.get("blurb").getAsString();
-      String goal = jo.get("goal").getAsString();
-      String pledged = jo.get("pledged").getAsString();
-      String backers_count = jo.get("backers_count").getAsString();
-      String state = jo.get("state").getAsString();
-      String currency_symbol = jo.get("currency_symbol").getAsString();
-      String currency = jo.get("currency").getAsString();
-      String country = jo.get("country").getAsString();
-      String creator = jo.get("creator").getAsJsonObject().get("name").getAsString();
-      String gender = getGenderTerm(creator);
-      String genderEstimage = getGenderEstimate(creator);
-      String genderConfidence = getGenderConfidence(creator);
-      String creatorImgUrlMedium = jo.get("creator").getAsJsonObject().get("avatar").getAsJsonObject().get("medium").getAsString();
-      String created_at = getDate(jo.get("created_at").getAsString());
-      String launched_at = getDate(jo.get("launched_at").getAsString());
-      String deadline = getDate(jo.get("deadline").getAsString());
-      String location_city = jo.get("location").getAsJsonObject().get("localized_name").getAsString();
-      String location_state = jo.get("location").getAsJsonObject().get("state").getAsString();
-      String category = jo.get("category").getAsJsonObject().get("name").getAsString();
-      String pitch = jo.get("pitch").getAsString().replaceAll("\\n", " ").replaceAll("  ", " ").replaceAll("  ", " ").replaceAll("  ", " ");
-
-      String line = name + "\t" +
-                    blurb + "\t" +
-                    goal + "\t" +
-                    pledged + "\t" +
-                    backers_count + "\t" +
-                    state + "\t" +
-                    currency_symbol + "\t" +
-                    currency + "\t" +
-                    country + "\t" +
-                    creator + "\t" +
-                    creatorImgUrlMedium + "\t" +
-                    created_at + "\t" +
-                    launched_at + "\t" +
-                    deadline + "\t" +
-                    location_city + "\t" +
-                    location_state + "\t" +
-                    category + "\t" +
-                    pitch;
-
-      map_new_scrId_line.put(scrId, jo);
-    }
-    return map_new_scrId_line;
-  }
-
-  /*
-  gender stuff - use lists of boys and girls names and rates, and compare
-
-  http://answers.google.com/answers/threadview/id/107201.html
-  http://scrapmaker.com/view/names/male-names.txt
-  https://www.ssa.gov/oact/babynames/limits.html
-  https://names.mongabay.com/male_names_alpha.htm
-  https://www.cs.cmu.edu/Groups/AI/areas/nlp/corpora/names/male.txt
-
-  just use this - https://pypi.python.org/pypi/SexMachine/ - do in python - add values to json files
-   */
-
-  private static String getGenderConfidence(String creator) {
-    return null;
-
-  }
-
-  private static String getGenderEstimate(String name) {
-    return null;
-  }
-
-  private static String getGenderTerm(String name) {
-    return null;
-  }
-
-  public static Map<String, String> getOldMap() throws IOException {
-
-    String csvFile = "2017_clean1.txt";
-
-    List<String> linesOld = Files.readAllLines(new File(csvFile).toPath());
-
-    Map<String, String> map_new_scrId_line = new HashMap();
-
-    for (String lineStr : linesOld) {
-
-      String[] lineAr = lineStr.split("\t");
-
-      System.out.println(lineStr);
-
-      String scrId = lineAr[0];
-
-      String lineWithoutScrId = "";
-
-      for (int i = 1; i < lineAr.length; i++) {
-        lineWithoutScrId += lineAr[i] + "\t";
-      }
-
-      map_new_scrId_line.put(scrId, lineWithoutScrId);
-    }
-
-    return map_new_scrId_line;
-  }
-
-  public static String getNewHeader() {
-    return "name" + "\t" +
-           "blurb" + "\t" +
-           "goal" + "\t" +
-           "pledged" + "\t" +
-           "backers_count" + "\t" +
-           "state" + "\t" +
-           "currency_symbol" + "\t" +
-           "currency" + "\t" +
-           "country" + "\t" +
-           "creator" + "\t" +
-           "gender" + "\t" +
-           "genderGuess" + "\t" +
-           "genderConfidence" + "\t" +
-           "creatorImgUrlMedium" + "\t" +
-           "created_at" + "\t" +
-           "launched_at" + "\t" +
-           "deadline" + "\t" +
-           "location_city" + "\t" +
-           "location_state" + "\t" +
-           "category" + "\t" +
-           "pitch\t";
-  }
-
-  public static String getOldHeader() {
-    return "id\tkickstarter_id\tname\tblurb\tcreator\tfemale1male0\tNot sure\tmain_category\tsub_category\tlaunched_at\tdeadline\tstate\tgoal\tpledged\tpercentage_funded\tbackers_count\tweb_url\tcurrency\tcurrency_symbol\thas_accurate_category\tcreated_at\tupdated_at\t";
   }
 
   public static Set<String> getSucceededScrIds() {

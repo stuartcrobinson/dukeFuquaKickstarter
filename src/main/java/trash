@@ -309,3 +309,125 @@ https://stackoverflow.com/questions/5464272/xpath-find-node-that-does-not-contai
 
   use  window.current_project --- looks like json.
    */
+
+
+
+
+    for (String scrId : map_old_scrId_line.keySet()) {
+
+      JsonObject jo = map_new_scrId_jo.get(scrId);
+      String oldLine = map_old_scrId_line.get(scrId);
+
+//      String scrId = jo.get("scrId").getAsString();
+      String name = jo.get("name").getAsString();
+      String blurb = jo.get("blurb").getAsString();
+      String goal = jo.get("goal").getAsString();
+      String pledged = jo.get("pledged").getAsString();
+      String backers_count = jo.get("backers_count").getAsString();
+      String state = jo.get("state").getAsString();
+      String currency_symbol = jo.get("currency_symbol").getAsString();
+      String currency = jo.get("currency").getAsString();
+      String country = jo.get("country").getAsString();
+      String creator = jo.get("creator").getAsJsonObject().get("name").getAsString();
+//      String gender = getGenderTerm(creator);
+//      String genderEstimage = getGenderEstimate(creator);
+//      String genderConfidence = getGenderConfidence(creator);
+      String creatorImgUrlMedium = jo.get("creator").getAsJsonObject().get("avatar").getAsJsonObject().get("medium").getAsString();
+      String created_at = getDate(jo.get("created_at").getAsString());
+      String launched_at = getDate(jo.get("launched_at").getAsString());
+      String deadline = getDate(jo.get("deadline").getAsString());
+      String location_city = jo.get("location").getAsJsonObject().get("localized_name").getAsString();
+      String location_state = jo.get("location").getAsJsonObject().get("state").getAsString();
+      String category = jo.get("category").getAsJsonObject().get("name").getAsString();
+      String pitchLen = jo.get("category").getAsJsonObject().get("name").getAsString();
+      String pitch = jo.get("pitch").getAsString().replaceAll("\\n", " ").replaceAll("  ", " ").replaceAll("  ", " ").replaceAll("  ", " ");
+
+      String newFull = name + "\t" +
+                       blurb + "\t" +
+                       goal + "\t" +
+                       pledged + "\t" +
+                       backers_count + "\t" +
+                       state + "\t" +
+
+
+                       currency_symbol + "\t" +
+                       currency + "\t" +
+                       country + "\t" +
+                       creator + "\t" +
+//                       gender + "\t" +
+//                       genderEstimage + "\t" +
+//                       genderConfidence + "\t" +
+                       creatorImgUrlMedium + "\t" +
+                       created_at + "\t" +
+                       launched_at + "\t" +
+                       deadline + "\t" +
+                       location_city + "\t" +
+                       location_state + "\t" +
+                       category + "\t" +
+                       pitchLen + "\t" +
+                       pitch;
+
+      megaFileStr += newFull + "\n";
+      updatedOld += pitch + "\n";
+      onlyNewStuff += newFull + "\n";
+
+      String beccaId = oldLine.split("\t")[0];
+      tiny += beccaId + "\t" +
+              goal + "\t" +
+              creator + "\t" +
+//              gender + "\t" +
+//              genderEstimage + "\t" +
+//              genderConfidence + "\t" +
+              pitch;
+
+      //TODO start here
+
+      /*
+      nohup mvn exec:java >/dev/null 2>&1 &
+       */
+    }
+
+
+
+//      String name = jo.get("name").getAsString();
+//      String blurb = jo.get("blurb").getAsString();
+//      String goal = jo.get("goal").getAsString();
+//      String pledged = jo.get("pledged").getAsString();
+//      String backers_count = jo.get("backers_count").getAsString();
+//      String state = jo.get("state").getAsString();
+//      String currency_symbol = jo.get("currency_symbol").getAsString();
+//      String currency = jo.get("currency").getAsString();
+//      String country = jo.get("country").getAsString();
+//      String creator = jo.get("creator").getAsJsonObject().get("name").getAsString();
+//      String genderCode = jo.get("genderCode").getAsString();
+//      String creatorImgUrlMedium = jo.get("creator").getAsJsonObject().get("avatar").getAsJsonObject().get("medium").getAsString();
+//      String created_at = getDate(jo.get("created_at").getAsString());
+//      String launched_at = getDate(jo.get("launched_at").getAsString());
+//      String deadline = getDate(jo.get("deadline").getAsString());
+//      String location_city = jo.get("location").getAsJsonObject().get("localized_name").getAsString();
+//      String location_state = jo.get("location").getAsJsonObject().get("state").getAsString();
+//      String category = jo.get("category").getAsJsonObject().get("name").getAsString();
+//      String pitchLen = getDate(jo.get("pitchWordCount").getAsString());
+//      String pitch = jo.get("pitch").getAsString().replaceAll("\\n", " ").replaceAll("  ", " ").replaceAll("  ", " ").replaceAll("  ", " ");
+
+//    String scrId = jo.get("scrId").getAsString();
+//    String name = jo.get("name").getAsString();
+//    String blurb = jo.get("blurb").getAsString();
+//    String goal = jo.get("goal").getAsString();
+//    String pledged = jo.get("pledged").getAsString();
+//    String backers_count = jo.get("backers_count").getAsString();
+//    String state = jo.get("state").getAsString();
+//    String currency_symbol = jo.get("currency_symbol").getAsString();
+//    String currency = jo.get("currency").getAsString();
+//    String country = jo.get("country").getAsString();
+//    String creator = jo.get("creator").getAsJsonObject().get("name").getAsString();
+//    String genderCode = jo.get("genderCode").getAsString();
+//    String creatorImgUrlMedium = jo.get("creator").getAsJsonObject().get("avatar").getAsJsonObject().get("medium").getAsString();
+//    String created_at = getDate(jo.get("created_at").getAsString());
+//    String launched_at = getDate(jo.get("launched_at").getAsString());
+//    String deadline = getDate(jo.get("deadline").getAsString());
+//    String location_city = jo.get("location").getAsJsonObject().get("localized_name").getAsString();
+//    String location_state = jo.get("location").getAsJsonObject().get("state").getAsString();
+//    String category = jo.get("category").getAsJsonObject().get("name").getAsString();
+//    String pitchLen = getDate(jo.get("pitchWordCount").getAsString());
+//    String pitch = jo.get("pitch").getAsString().replaceAll("\\n", " ").replaceAll("  ", " ").replaceAll("  ", " ").replaceAll("  ", " ");
